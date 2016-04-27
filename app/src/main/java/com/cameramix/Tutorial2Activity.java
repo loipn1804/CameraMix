@@ -2,6 +2,7 @@ package com.cameramix;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
+import org.opencv.android.JavaCameraView;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.CvType;
@@ -35,7 +36,7 @@ public class Tutorial2Activity extends Activity implements CvCameraViewListener2
     private MenuItem               mItemPreviewCanny;
     private MenuItem               mItemPreviewFeatures;
 
-    private CameraBridgeViewBase   mOpenCvCameraView;
+    private JavaCameraView mOpenCvCameraView;
 
     private BaseLoaderCallback  mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -73,7 +74,7 @@ public class Tutorial2Activity extends Activity implements CvCameraViewListener2
 
         setContentView(R.layout.tutorial2_surface_view);
 
-        mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.tutorial2_activity_surface_view);
+        mOpenCvCameraView = (JavaCameraView) findViewById(R.id.tutorial2_activity_surface_view);
         mOpenCvCameraView.setVisibility(CameraBridgeViewBase.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
     }
@@ -100,7 +101,7 @@ public class Tutorial2Activity extends Activity implements CvCameraViewListener2
         super.onResume();
         if (!OpenCVLoader.initDebug()) {
             Log.d(TAG, "Internal OpenCV library not found. Using OpenCV Manager for initialization");
-            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_0_0, this, mLoaderCallback);
+            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_1_0, this, mLoaderCallback);
         } else {
             Log.d(TAG, "OpenCV library found inside package. Using it!");
             mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
