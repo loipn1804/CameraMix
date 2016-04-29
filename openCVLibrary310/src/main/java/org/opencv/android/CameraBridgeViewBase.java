@@ -430,10 +430,10 @@ public abstract class CameraBridgeViewBase extends SurfaceView implements Surfac
                     mFpsMeter.draw(canvas, 20, 30);
                 }
                 getHolder().unlockCanvasAndPost(canvas);
-                long now = System.currentTimeMillis();
-                Log.e("deliverAndDrawFrame", (now - start) + " " + mCacheBitmap.getWidth() + " " + mCacheBitmap.getHeight());
-                start = now;
             }
+            long now = System.currentTimeMillis();
+            Log.e("deliverAndDrawFrame", (now - start) + " " + mCacheBitmap.getWidth() + " " + mCacheBitmap.getHeight());
+            start = now;
         }
     }
 
